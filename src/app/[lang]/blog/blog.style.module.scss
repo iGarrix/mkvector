@@ -1,0 +1,14 @@
+.cont {
+	.section1 {
+		@apply px-[10rem] pb-[2rem];
+		@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+		h1 {
+			@apply uppercase text-4xl font-black;
+		}
+	}
+
+	.section2 {
+		@apply grid grid-cols-4 gap-8 px-[10rem];
+		@apply xs:px-[1rem] xs:grid-cols-1 sm:grid-cols-2 sm:px-[2rem] md:px-[5rem] lg:grid-cols-3 xl:grid-cols-4 2xl:px-[10rem];
+	}
+}

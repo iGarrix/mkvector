@@ -1,0 +1,67 @@
+.header {
+	@apply sticky top-0 left-0 w-full border-b bg-light;
+
+	.s1 {
+		@apply flex items-center justify-between px-[10rem] gap-5 h-[4rem];
+		@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+		@apply xs:gap-0 md:gap-5;
+
+		.logoWrapper {
+			@apply h-full border-r pr-5 place-content-center;
+			@apply xs:w-full md:w-auto;
+
+			.title {
+				@apply text-3xl font-black w-full font-sheppard tracking-widest;
+			}
+		}
+
+		.navbarList {
+			@apply flex items-center gap-[3rem];
+			@apply xs:hidden md:flex;
+
+			.openTrigger {
+				@apply font-semibold transition-all data-[state=open]:text-accent;
+			}
+
+			.trigger {
+				@apply font-semibold transition-all hover:text-accent text-sm;
+			}
+
+			.selected {
+				@apply text-accent;
+			}
+
+			.openContent {
+				@apply rounded-b-sm;
+			}
+		}
+
+		.callback {
+			@apply flex items-center gap-1 h-full px-5 border-x transition-all;
+			@apply xs:hidden md:flex;
+
+			&:hover {
+				@apply bg-light-200;
+			}
+
+			svg {
+				@apply text-gray-500;
+			}
+		}
+
+		.openNav {
+			@apply w-full justify-end transition-all active:text-accent;
+			@apply xs:flex md:hidden;
+		}
+	}
+}
+
+.headerPath {
+	@apply py-3 px-[10rem] flex items-center gap-4 flex-wrap;
+	@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+
+	li,
+	span {
+		@apply text-zinc-400 font-semibold capitalize text-sm;
+	}
+}

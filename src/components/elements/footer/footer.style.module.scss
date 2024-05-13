@@ -1,0 +1,61 @@
+.footer {
+	@apply px-[10rem] border-t pt-[3rem] flex flex-col gap-6;
+	@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+
+	.mainpart {
+		@apply grid grid-cols-4;
+		@apply xs:grid-cols-1 xs:gap-4 min-[600px]:grid-cols-2 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4;
+
+		.heading {
+			@apply xs:col-span-full lg:col-span-1;
+			.title {
+				@apply font-sheppard text-5xl;
+				@apply xs:text-center lg:text-start;
+			}
+
+			.right {
+				@apply text-zinc-400 text-sm flex gap-1 items-center;
+				@apply xs:justify-center lg:justify-start;
+
+				svg {
+					@apply w-[16px];
+				}
+			}
+
+			br {
+				@apply xs:hidden xl:block;
+			}
+		}
+
+		.list {
+			@apply flex flex-col gap-2;
+
+			li {
+				@apply flex gap-3;
+
+				svg {
+					@apply w-[1.2rem] text-accent;
+				}
+			}
+
+			.contactButton {
+				@apply border rounded-sm p-2 w-min whitespace-nowrap px-4 transition-colors hover:text-light hover:bg-accent hover:border-accent;
+			}
+		}
+
+		.head {
+			@apply uppercase text-dark font-black;
+		}
+	}
+
+	.devpart {
+		@apply w-full flex justify-center pb-1;
+
+		a {
+			@apply flex gap-1 items-start transition-all text-sm hover:text-accent text-zinc-400;
+			svg {
+				@apply w-[16px] pb-2;
+			}
+		}
+	}
+}

@@ -1,0 +1,7 @@
+.container {
+	@apply min-h-svh bg-light text-dark;
+
+	.wrapper {
+		@apply py-[2rem];
+	}
+}
