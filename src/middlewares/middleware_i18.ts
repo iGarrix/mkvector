@@ -34,15 +34,13 @@ export function withI18nMiddleware(middleware: CustomMiddleware) {
 
 		if (pathnameIsMissingLocale) {
 			const locale = getLocale(request)
-
 			const url: URL = new URL(
 				`/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
 				request.url
 			)
-
-			if (locale === i18n.defaultLocale) {
-				return NextResponse.rewrite(url)
-			}
+			// if (locale === i18n.defaultLocale) {
+			// 	return NextResponse.rewrite(url)
+			// }
 			return NextResponse.redirect(url)
 		}
 

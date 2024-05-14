@@ -14,7 +14,9 @@ import {
 import React, { Fragment } from 'react'
 import { PathHeader } from './pathheader.component'
 import { usePathname } from 'next/navigation'
-interface IHeaderProps {}
+interface IHeaderProps {
+	locale: any
+}
 
 const portfolioNav: Array<{ title: string; href: string }> = [
 	{
@@ -71,7 +73,7 @@ function Header({ ...props }: IHeaderProps) {
 										sass.openTrigger,
 										pathname.includes('/portfolio') && sass.selected
 									)}>
-									Портфоліо
+									{props.locale.globalHeader.navigation.portfolio}
 								</NavigationMenuTrigger>
 								<NavigationMenuContent className={sass.openContent}>
 									<nav
@@ -94,7 +96,9 @@ function Header({ ...props }: IHeaderProps) {
 									pathname.includes('/blog') && sass.selected
 								)}>
 								<Link href='/blog' legacyBehavior passHref>
-									<NavigationMenuLink>Блог</NavigationMenuLink>
+									<NavigationMenuLink>
+										{props.locale.globalHeader.navigation.blog}
+									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 							<NavigationMenuItem
@@ -103,15 +107,17 @@ function Header({ ...props }: IHeaderProps) {
 									pathname.includes('/feedbacks') && sass.selected
 								)}>
 								<Link href='/feedbacks' legacyBehavior passHref>
-									<NavigationMenuLink>Відгуки</NavigationMenuLink>
+									<NavigationMenuLink>
+										{props.locale.globalHeader.navigation.feedbacks}
+									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
 						</NavigationMenuList>
 					</NavigationMenu>
-					<button className={sass.callback}>
+					<button className={sass.callback} aria-label='callbackform'>
 						<MessageCircle />
 					</button>
-					<button className={sass.openNav}>
+					<button className={sass.openNav} aria-label='phonemenu'>
 						<Menu />
 					</button>
 				</aside>

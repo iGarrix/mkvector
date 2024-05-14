@@ -1,15 +1,15 @@
 {
     "globalHeader": {
         "navigation": {
-            "portfolio": "Портфоліо",
-            "blog": "Блог",
-            "feedbacks": "Відгуки"
+            "portfolio": "Portfolio",
+            "blog": "Blog",
+            "feedbacks": "Reviews"
         },
         "path": {
             "main": "Головна сторінка"
         }
     },
     "globalFooter": {
-
+        
     }
 }

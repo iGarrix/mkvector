@@ -7,6 +7,10 @@
   -webkit-tab-highlight-color: transparent;
 }
 
+input, textarea {
+  @apply bg-clip-text;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

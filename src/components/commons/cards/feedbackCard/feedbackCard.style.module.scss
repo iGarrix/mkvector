@@ -1,0 +1,37 @@
+.cont {
+	@apply flex gap-4;
+	@apply xs:flex-col xs:items-center min-[600px]:flex-row min-[600px]:items-start;
+
+	img {
+		@apply w-[250px] h-[250px] object-contain aspect-auto bg-light-200 rounded-md;
+	}
+
+	.s1 {
+		.title {
+			@apply font-bold text-2xl tracking-wide;
+		}
+
+		.status {
+			@apply text-zinc-500;
+		}
+	}
+
+	.s2 {
+		@apply text-balance flex flex-col gap-2 ml-4;
+		@apply xs:ml-0 sm:ml-4;
+		.heading {
+			@apply flex gap-4 items-center;
+			svg {
+				@apply w-[16px] text-amber-400 fill-amber-400;
+			}
+
+			p {
+				@apply text-zinc-400;
+			}
+		}
+
+		.content {
+			@apply text-dark/90 max-w-[35rem];
+		}
+	}
+}

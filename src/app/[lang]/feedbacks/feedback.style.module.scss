@@ -1,0 +1,41 @@
+.cont {
+	@apply flex flex-col gap-8;
+	.sect1 {
+		@apply border-y grid grid-cols-2;
+		@apply xs:grid-cols-1 lg:grid-cols-2;
+		@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+
+		.s1 {
+			@apply border-r;
+			@apply xs:border-r-0 lg:border-r;
+		}
+
+		aside {
+			@apply py-5;
+		}
+
+		.s2 {
+			@apply px-6;
+			@apply xs:px-0 lg:px-6;
+		}
+	}
+
+	.sect2 {
+		@apply grid grid-cols-2 px-[10rem] gap-12;
+		@apply xs:grid-cols-1 min-[1360px]:grid-cols-2;
+		@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+	}
+}
+
+.feedbackForm {
+	@apply flex flex-col gap-4;
+
+	button {
+		@apply xs:w-full md:w-min;
+	}
+
+	.fieldContainer {
+		@apply grid grid-cols-2 gap-4;
+		@apply xs:grid-cols-1 sm:grid-cols-2;
+	}
+}

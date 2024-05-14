@@ -10,6 +10,7 @@ import {
 	MessagesSquare,
 	PhoneCallIcon,
 } from 'lucide-react'
+import Button from '@/components/commons/button/button.component'
 
 export const Footer: React.FC = ({ ...props }) => {
 	return (
@@ -17,7 +18,7 @@ export const Footer: React.FC = ({ ...props }) => {
 			<aside className={s.mainpart}>
 				<div className={s.heading}>
 					<h1 className={s.title}>MKVector</h1>
-					<br />
+
 					<p className={s.right}>
 						<Copyright /> Всі права захищені
 					</p>
@@ -63,7 +64,8 @@ export const Footer: React.FC = ({ ...props }) => {
 					<li className={s.head}>Місце розташування</li>
 					<li>Київ, вул. Жмеринська, 1</li>
 					<li className=''>
-						<button className={s.contactButton}>Зв'язатись з нами</button>
+						<Button>Зв'язатись з нами</Button>
+						{/* <button className={s.contactButton}></button> */}
 					</li>
 				</ul>
 			</aside>
