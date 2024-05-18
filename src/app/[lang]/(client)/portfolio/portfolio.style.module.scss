@@ -1,0 +1,24 @@
+.container {
+	@apply w-full h-full flex items-center justify-center;
+	@apply md:px-[5rem];
+	.central {
+		@apply bg-light-200 shadow-xl shadow-black/5 border rounded p-8 px-16 text-center;
+		@apply xs:w-full xs:bg-transparent xs:shadow-none xs:border-0;
+		@apply lg:bg-light-200 lg:shadow-xl lg:border;
+		@apply xs:px-[1rem] sm:px-[2rem] md:px-0 lg:px-16 lg:w-auto;
+
+		aside {
+			h1 {
+				@apply text-2xl font-bold;
+			}
+			p {
+				@apply text-zinc-500;
+			}
+		}
+
+		section {
+			@apply grid grid-cols-4 gap-4;
+			@apply xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+		}
+	}
+}

@@ -51,5 +51,4 @@ function FeedbackCard({
 	)
 }
 
-FeedbackCard.DEF = <></>
 export default FeedbackCard

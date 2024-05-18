@@ -17,7 +17,7 @@ function getLocale(request: NextRequest): string | undefined {
 	return locale
 }
 
-export function middleware(request: NextRequest) {}
+export function middlewares(request: NextRequest) {}
 
 export function withI18nMiddleware(middleware: CustomMiddleware) {
 	return async (

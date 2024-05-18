@@ -53,6 +53,10 @@ const portfolioNav: Array<{ title: string; href: string }> = [
 		title: 'wardrobes',
 		href: '/',
 	},
+	{
+		title: 'office',
+		href: '/',
+	},
 ]
 
 function Header({ ...props }: IHeaderProps) {

@@ -2,6 +2,28 @@
     "global": {
         "rights": "All rights reserved"
     },
+    "metadata": {
+        "/": {
+            "title": "Main",
+            "description": "Case furniture to order in Kyiv"
+        }, 
+        "/[notfound]": {
+            "title": "Page not found",
+            "description": "Page over current address not found"
+        },     
+        "/portfolio": {
+            "title": "Portfolio",
+            "description": "All our kinds of work"
+        },
+        "/blog": {
+            "title": "Blog",
+            "description": "Read more about us"
+        },
+        "/feedbacks": {
+            "title": "Feedbacks",
+            "description": "We have exellent work and our clients confirm it"
+        }
+    },
     "routing": {
         "root": "Main page",
         "blog": "Blog",
@@ -20,7 +42,8 @@
                     "bathrooms": "bathrooms",
                     "bedrooms": "bedrooms",
                     "tables": "tables",
-                    "wardrobes": "wardrobes"
+                    "wardrobes": "wardrobes",
+                    "office": "office furniture"
                   }
             },
             "blog": "Blog",
@@ -79,7 +102,17 @@
             "description": "Our clients' feedbacks, you can also leave your own"
         },
         "/blog": {
-            "title": "Our blog"
+            "title": "Our blog",
+            "redirect": "Return to blogs",
+            "[notfound]": {
+                "title": "Blog not found",
+                "return1": "You can redirect to",
+                "return2": "blog page"
+            }
+        },
+        "/portfolio": {
+            "title": "Choose a kind of work",
+            "description": "You can see our works and choose similar of them for yourself"
         }
     }
 }

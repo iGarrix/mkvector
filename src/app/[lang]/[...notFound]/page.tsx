@@ -2,6 +2,17 @@ import Link from '@/components/Link/link.component'
 import { getDictionary } from '@/config/dictionary'
 import { Locale } from '@/config/i18.config'
 import { Copyright } from 'lucide-react'
+import { Metadata } from 'next'
+
+export async function generateMetadata(props: {
+	params: { lang: Locale }
+}): Promise<Metadata> {
+	const { metadata } = await getDictionary(props.params.lang)
+	return {
+		title: metadata['/[notfound]'].title,
+		description: metadata['/[notfound]'].description,
+	}
+}
 
 export default async function NotFound(props: { params: { lang: Locale } }) {
 	const data = await getDictionary(props.params.lang)

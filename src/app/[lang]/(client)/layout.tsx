@@ -5,10 +5,6 @@ import { Footer } from '@/components/elements/footer/footer.component'
 import { getDictionary } from '@/config/dictionary'
 import { Locale } from '@/config/i18.config'
 
-export const metadata: Metadata = {
-	title: 'Головна',
-}
-
 export default async function ClientLayout(props: {
 	children: React.ReactNode
 	params: { lang: Locale }

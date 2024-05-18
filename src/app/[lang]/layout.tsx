@@ -3,40 +3,42 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, Mrs_Sheppards } from 'next/font/google'
 import localFont from 'next/font/local'
+import { getDictionary } from '@/config/dictionary'
+import { opengraph } from '@/lib/metadata.helper'
 const inter = Inter({ subsets: ['latin'], variable: '--inter' })
 
-export const metadata: Metadata = {
-	title: {
-		default: 'Головна - MKVector',
-		template: '%s - MKVector',
-	},
-	description: 'КОРПУСНІ МЕБЛІ НА ЗАМОВЛЕННЯ У КИЄВІ',
-	applicationName: 'MKVector',
-	referrer: 'origin-when-cross-origin',
-	keywords: ['MKVector'],
-	authors: [{ name: 'Illinpayne', url: 'https://webcraft.rivne.ua' }],
-	creator: 'Stas Tarnogurskiy',
-	publisher: 'Stas Tarnogurskiy',
-	formatDetection: {
-		email: false,
-		address: false,
-		telephone: false,
-	},
-	metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'https://nextjs.org'),
-	twitter: {
-		card: 'summary_large_image',
-		description: 'КОРПУСНІ МЕБЛІ НА ЗАМОВЛЕННЯ У КИЄВІ',
-		creator: '@illinpayne',
-		images: ['../../public/twitter_main.png'],
-	},
-	openGraph: {
-		title: 'MKVector - корпусні меблі на замовлення у Києві',
-		description: 'КОРПУСНІ МЕБЛІ НА ЗАМОВЛЕННЯ У КИЄВІ',
-		url: process.env.NEXT_PUBLIC_URL,
-		siteName: 'MKVector',
-		type: 'website',
-		images: ['../../public/twitter_main.png'],
-	},
+export async function generateStaticParams() {
+	return i18n.locales.map(locale => ({ lang: locale }))
+}
+
+export async function generateMetadata(props: {
+	params: { lang: Locale }
+}): Promise<Metadata> {
+	const { metadata } = await getDictionary(props.params.lang)
+
+	return {
+		title: {
+			default: `${metadata['/'].title} — MKVector`,
+			template: '%s — MKVector',
+		},
+		description: metadata['/'].description,
+		applicationName: 'MKVector',
+		referrer: 'origin-when-cross-origin',
+		keywords: ['MKVector'],
+		authors: [{ name: 'Illinpayne', url: 'https://webcraft.rivne.ua' }],
+		creator: 'Stas Tarnogurskiy',
+		publisher: 'Stas Tarnogurskiy',
+		formatDetection: {
+			email: false,
+			address: false,
+			telephone: false,
+		},
+		metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'https://nextjs.org'),
+		...opengraph({
+			title: metadata['/'].title,
+			description: metadata['/'].description,
+		}),
+	}
 }
 const sheppard = Mrs_Sheppards({
 	variable: '--sheppard',
@@ -108,10 +110,6 @@ const proxima = localFont({
 		},
 	],
 })
-
-export async function generateStaticParams() {
-	return i18n.locales.map(locale => ({ lang: locale }))
-}
 
 export default function RootLayout({
 	children,

@@ -1,0 +1,20 @@
+.cont {
+	@apply flex flex-col gap-4 bg-zinc-200 ring-2 ring-slate-300 transition-all rounded overflow-hidden;
+	aside {
+		@apply p-6 flex justify-center w-full;
+		img {
+			@apply w-[150px] h-[150px] object-contain aspect-auto bg-transparent rounded-md;
+		}
+	}
+
+	&:hover {
+		@apply ring-accent cursor-pointer text-accent;
+	}
+
+	.wrap {
+		@apply bg-gradient-to-b from-zinc-200 to-light py-3;
+		.title {
+			@apply text-lg font-bold capitalize;
+		}
+	}
+}
