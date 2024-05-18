@@ -9,19 +9,22 @@ import {
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { MoveRight } from 'lucide-react'
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
 import sass from './header.style.module.scss'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
-interface IPathHeaderProps {}
+import Link from '@/components/Link/link.component'
+import { Locale } from '@/config/i18.config'
+interface IPathHeaderProps {
+	routingData: any
+	locale: Locale
+}
 
 export const PathHeader: React.FC<IPathHeaderProps> = ({ ...props }) => {
 	const pathname = usePathname()
-
 	const rerender = useMemo(() => {
 		const init = [
 			{
-				title: 'Головна сторінка',
+				title: props.routingData['root'],
 				path: '/',
 				isEnd: false,
 			},
@@ -29,12 +32,19 @@ export const PathHeader: React.FC<IPathHeaderProps> = ({ ...props }) => {
 		if (pathname === '/') {
 			return init
 		}
-		const next = pathname.split('/').filter(f => f !== '')
+		const next = pathname
+			.split('/')
+			.filter(f => f !== '')
+			.slice(1)
 
 		return [
 			...init,
 			...next.map((item, key) => {
-				return { title: item, path: item, isEnd: key === next.length - 1 }
+				return {
+					title: props.routingData[item],
+					path: item,
+					isEnd: key === next.length - 1,
+				}
 			}),
 		]
 	}, [[pathname]])
@@ -60,7 +70,9 @@ export const PathHeader: React.FC<IPathHeaderProps> = ({ ...props }) => {
 									<BreadcrumbPage>{item.title}</BreadcrumbPage>
 								) : (
 									<BreadcrumbLink asChild>
-										<Link href={item.path}>{item.title}</Link>
+										<Link lang={props.locale} href={item.path}>
+											{item.title}
+										</Link>
 									</BreadcrumbLink>
 								)}
 							</BreadcrumbItem>

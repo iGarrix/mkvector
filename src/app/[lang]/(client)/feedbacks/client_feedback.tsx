@@ -22,7 +22,7 @@ const feedbackArray: Feedback[] = [
 		},
 		name: 'Максим',
 		stars: 5,
-		status: 'Покупець',
+		status: 'status_buyer',
 		date: new Date(2024, 3, 2),
 		content:
 			'Замовили гардероб в передпокій. Зроблено швидко і круто. Цілком задоволений. Порадила кума. Сподіваюся, не підведе',
@@ -33,7 +33,7 @@ const feedbackArray: Feedback[] = [
 		},
 		name: 'Анна',
 		stars: 5,
-		status: 'Покупець',
+		status: 'status_buyer',
 		date: new Date(2024, 4, 2),
 		content:
 			'Замовляла комп`ютерний стіл в МК Вектор, дуже задоволена - ціна, якість дизайн, терміни виконання робіт. Всі мої побажання були враховані. Отримала саме те, що хотіла - ідеальне і комфортне місце для продуктивної роботи вдома! Дякую!',
@@ -44,7 +44,7 @@ const feedbackArray: Feedback[] = [
 		},
 		name: 'Тетяна',
 		stars: 5,
-		status: 'Покупець',
+		status: 'status_buyer',
 		date: new Date(2023, 10, 23),
 		content:
 			'Ми замовили кухонні меблі, завдяки Mk Vector для консультації, розробки дизайну і реалізації, через 2 тижні все було готово, як хотілося.',
@@ -55,7 +55,7 @@ const feedbackArray: Feedback[] = [
 		},
 		name: 'Тетяна',
 		stars: 5,
-		status: 'Покупець',
+		status: 'status_buyer',
 		date: new Date(2023, 9, 14),
 		content:
 			'Ми замовили меблі в дитячу кімнату. Вони допомогли нам з проектом, вони реалізували всі побажання. Все зроблено якісно і вчасно! Монтаж і монтаж теж варто відзначити - швидко і чисто! Ми зв`яжемося і порекомендуємо друзів!',
@@ -66,29 +66,36 @@ const feedbackArray: Feedback[] = [
 		},
 		name: 'Анастасія',
 		stars: 5,
-		status: 'Покупець',
+		status: 'status_buyer',
 		date: new Date(2023, 10, 23),
 		content:
 			'Якщо ви хочете взяти роботу, вам доведеться взяти роботу, і ви побачите результати на іншій стороні велосипеда. Дякую за гарну консультацію',
 	},
 ]
 
-export default function FeedbackClient() {
+export default function FeedbackClient(props: {
+	data: any
+	pageData: any
+	feedbackCardData: any
+}) {
 	return (
 		<main className={s.cont}>
 			<section className={s.sect1}>
 				<aside className={s.s1}>
-					<h1 className='text-4xl font-black uppercase'>Відгуки</h1>
-					<p>Відгуки наших клієнтів, ви також можете залишити свій відгук</p>
+					<h1 className='text-4xl font-black uppercase'>
+						{props.pageData.title}
+					</h1>
+					<p>{props.pageData.description}</p>
 				</aside>
 				<aside className={s.s2}>
-					<FeedbackForm />
+					<FeedbackForm data={props.data} />
 				</aside>
 			</section>
 			<section className={s.sect2}>
 				{feedbackArray.map(({ image, ...item }, key) => (
 					<FeedbackCard
 						key={key}
+						languagedata={props.feedbackCardData}
 						image={{ alt: `${key}_image_feedback`, ...image }}
 						{...item}
 					/>

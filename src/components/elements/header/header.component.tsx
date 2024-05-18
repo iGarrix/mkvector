@@ -1,7 +1,6 @@
 'use client'
 import { cn } from '@/lib/utils'
 import sass from './header.style.module.scss'
-import Link from 'next/link'
 import { ChevronRight, Menu, MessageCircle } from 'lucide-react'
 import {
 	NavigationMenu,
@@ -14,54 +13,56 @@ import {
 import React, { Fragment } from 'react'
 import { PathHeader } from './pathheader.component'
 import { usePathname } from 'next/navigation'
+import Link from '@/components/Link/link.component'
+import { Locale } from '@/config/i18.config'
 interface IHeaderProps {
-	locale: any
+	locale: Locale
+	datalocale: any
 }
 
 const portfolioNav: Array<{ title: string; href: string }> = [
 	{
-		title: 'Кухні',
+		title: 'kitchens',
 		href: '/s',
 	},
 	{
-		title: 'Шафи',
+		title: 'cases',
 		href: '/',
 	},
 	{
-		title: 'Дитячі',
+		title: 'kids',
 		href: '/',
 	},
 	{
-		title: 'Передпокої',
+		title: 'hallways',
 		href: '/',
 	},
 	{
-		title: 'Ванні кімнати',
+		title: 'bathrooms',
 		href: '/',
 	},
 	{
-		title: 'Спальні',
+		title: 'bedrooms',
 		href: '/',
 	},
 	{
-		title: 'Столи',
+		title: 'tables',
 		href: '/',
 	},
 	{
-		title: 'Гардеробні',
+		title: 'wardrobes',
 		href: '/',
 	},
 ]
 
 function Header({ ...props }: IHeaderProps) {
 	const pathname = usePathname()
-
 	return (
 		<Fragment>
 			<header className={cn(sass.header)} {...props}>
 				<aside className={sass.s1}>
 					<div className={sass.logoWrapper}>
-						<Link href={'/'} className={sass.title}>
+						<Link href={'/'} lang={props.locale} className={sass.title}>
 							MKVector
 						</Link>
 					</div>
@@ -73,7 +74,7 @@ function Header({ ...props }: IHeaderProps) {
 										sass.openTrigger,
 										pathname.includes('/portfolio') && sass.selected
 									)}>
-									{props.locale.globalHeader.navigation.portfolio}
+									{props.datalocale[0].navigation.portfolio.title}
 								</NavigationMenuTrigger>
 								<NavigationMenuContent className={sass.openContent}>
 									<nav
@@ -81,9 +82,14 @@ function Header({ ...props }: IHeaderProps) {
 										{portfolioNav.map((item, key) => (
 											<Link
 												key={key}
+												lang={props.locale}
 												href={item.href}
-												className={`px-4 py-2 w-full transition-colors hover:bg-light-200 hover:text-accent flex items-center justify-between gap-10 group/item`}>
-												{item.title}
+												className={`px-4 py-2 w-full transition-colors hover:bg-light-200 hover:text-accent flex items-center justify-between gap-10 group/item capitalize`}>
+												{
+													props.datalocale[0].navigation.portfolio.subset[
+														item.title
+													]
+												}
 												<ChevronRight className='w-[16px] transition-transform group-hover/item:translate-x-1' />
 											</Link>
 										))}
@@ -95,9 +101,9 @@ function Header({ ...props }: IHeaderProps) {
 									sass.trigger,
 									pathname.includes('/blog') && sass.selected
 								)}>
-								<Link href='/blog' legacyBehavior passHref>
+								<Link href='/blog' lang={props.locale} legacyBehavior passHref>
 									<NavigationMenuLink>
-										{props.locale.globalHeader.navigation.blog}
+										{props.datalocale[0].navigation.blog}
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
@@ -106,9 +112,13 @@ function Header({ ...props }: IHeaderProps) {
 									sass.trigger,
 									pathname.includes('/feedbacks') && sass.selected
 								)}>
-								<Link href='/feedbacks' legacyBehavior passHref>
+								<Link
+									href='/feedbacks'
+									lang={props.locale}
+									legacyBehavior
+									passHref>
 									<NavigationMenuLink>
-										{props.locale.globalHeader.navigation.feedbacks}
+										{props.datalocale[0].navigation.feedbacks}
 									</NavigationMenuLink>
 								</Link>
 							</NavigationMenuItem>
@@ -122,7 +132,7 @@ function Header({ ...props }: IHeaderProps) {
 					</button>
 				</aside>
 			</header>
-			<PathHeader />
+			<PathHeader routingData={props.datalocale[1]} locale={props.locale} />
 		</Fragment>
 	)
 }

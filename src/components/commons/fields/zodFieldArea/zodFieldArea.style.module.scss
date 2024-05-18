@@ -2,7 +2,7 @@
 	@apply flex flex-col gap-1 px-4 py-3 bg-light-200 rounded-xl border;
 
 	label {
-		@apply capitalize text-zinc-500 text-sm select-none flex items-center gap-1;
+		@apply text-zinc-500 text-sm select-none flex items-center gap-1;
 
 		svg {
 			@apply w-[16px];

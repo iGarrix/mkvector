@@ -9,11 +9,11 @@ import Button from '@/components/commons/button/button.component'
 import ZodFieldArea from '@/components/commons/fields/zodFieldArea/zodFieldArea.component'
 import { cn } from '@/lib/utils'
 
-export const FeedbackForm: React.FC = () => {
+export const FeedbackForm: React.FC<any> = (props: any) => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors, isSubmitSuccessful, isValid },
+		formState: { errors, isSubmitSuccessful },
 	} = useForm<FeedbackValues>({
 		defaultValues: {
 			name: '',
@@ -21,31 +21,34 @@ export const FeedbackForm: React.FC = () => {
 		},
 		resolver: zodResolver(FeedbackSchema),
 	})
-
 	const onSubmit = (props: FeedbackValues) => {}
-
+	const data = props.data.feedback
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={s.feedbackForm}>
 			<div className={s.fieldContainer}>
 				<ZodField
 					type='text'
 					{...register('name')}
-					upperPlaceholder={`Ім'я`}
-					placeholder='Введіть ім`я'
-					errorMessage={errors.name?.message}
+					upperPlaceholder={data.inputName.label}
+					placeholder={data.inputName.placeholder}
+					errorMessage={
+						errors.name?.message && data.feedback.inputName[errors.name.message]
+					}
 				/>
 				<ZodFieldArea
 					{...register('content')}
-					upperPlaceholder='Відгук'
-					placeholder='Напишіть відгук'
-					errorMessage={errors.content?.message}
+					upperPlaceholder={data.inputContent.label}
+					placeholder={data.inputContent.placeholder}
+					errorMessage={
+						errors.content?.message && data.inputContent[errors.content.message]
+					}
 				/>
 			</div>
 			<Button
 				type='submit'
 				disabled={isSubmitSuccessful}
 				className={cn(isSubmitSuccessful && 'bg-emerald-400 text-light')}>
-				{isSubmitSuccessful ? 'Відгук надіслано!' : 'Залишити відгук'}
+				{isSubmitSuccessful ? 'Відгук надіслано!' : data.submit.placeholder}
 			</Button>
 		</form>
 	)

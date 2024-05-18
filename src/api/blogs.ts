@@ -1,12 +1,14 @@
-'use client'
+export interface IBlogProps {
+	languagedata: any
+}
 
-import BlogCard from '@/components/commons/cards/blogCard/blog_card.component'
-import s from './blog.style.module.scss'
-const blogsPreview: Array<{
+export type BlogType = {
 	img: string
 	title: string
 	detail: string
-}> = [
+}
+
+export const blogsPreview: Array<BlogType> = [
 	{
 		img: 'https://mkvector.com/wp-content/uploads/xsmall-kitchen-ideas-1-768x768.jpg.pagespeed.ic.G8zwhC55Bo.webp',
 		title: 'Як використовувати обмежений простір кухні по максимуму',
@@ -49,29 +51,3 @@ const blogsPreview: Array<{
 			'Урахування органомікі кухні, Правильно використовуйте кухонний трикутник, Підсвідка на кухні - стиль і функціональність, Оптимізація простору для кухонних приборів',
 	},
 ]
-
-export default function ClientBlog() {
-	return (
-		<main className={s.cont}>
-			<section className={s.section1}>
-				<h1>Наш блог</h1>
-			</section>
-			<section className={s.section2}>
-				{blogsPreview.map((item, key) => (
-					<BlogCard key={key}>
-						<BlogCard.Image
-							href='/'
-							image={{
-								src: item.img,
-								alt: `${key}_blog_img`,
-							}}
-						/>
-						<BlogCard.Title>{item.title}</BlogCard.Title>
-						<BlogCard.Detail>{item.detail}</BlogCard.Detail>
-						<BlogCard.Action href='/'>Детальніше</BlogCard.Action>
-					</BlogCard>
-				))}
-			</section>
-		</main>
-	)
-}

@@ -1,16 +1,20 @@
 'use client'
+import { languageRedirect } from '@/components/Link/link.types'
+import { Locale } from '@/config/i18.config'
 import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { ComponentPropsWithoutRef } from 'react'
 interface IBlogCardLinkProps extends ComponentPropsWithoutRef<'button'> {
 	href: string
+	locale: Locale
 }
 
 function BlogCardAction({
 	className,
 	children,
 	href,
+	locale,
 	...props
 }: IBlogCardLinkProps) {
 	const { push } = useRouter()
@@ -22,7 +26,7 @@ function BlogCardAction({
 			)}
 			{...props}
 			onClick={() => {
-				push(href)
+				push(languageRedirect(locale, href))
 			}}>
 			{children}
 		</button>

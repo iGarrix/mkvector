@@ -1,7 +1,28 @@
 {
+    "global": {
+        "rights": "All rights reserved"
+    },
+    "routing": {
+        "root": "Main page",
+        "blog": "Blog",
+        "portfolio": "Portfolio",
+        "feedbacks": "Feedbacks"
+    },
     "globalHeader": {
         "navigation": {
-            "portfolio": "Portfolio",
+            "portfolio": {
+                "title": "Portfolio",
+                "subset": {
+                    "kitchens": "kitchens",
+                    "cases": "cases",
+                    "kids": "kids",
+                    "hallways": "hallways",
+                    "bathrooms": "bathrooms",
+                    "bedrooms": "bedrooms",
+                    "tables": "tables",
+                    "wardrobes": "wardrobes"
+                  }
+            },
             "blog": "Blog",
             "feedbacks": "Reviews"
         },
@@ -10,6 +31,55 @@
         }
     },
     "globalFooter": {
-        
+        "navigation_root": "navigation",
+        "contact_root": "contacts",
+        "placement": {
+            "root":"placement",
+            "placeaddress": "Kyiv, st. Zmyrinchka, 1",
+            "action": "Contact us"
+        }
+    },
+    "not_found": {
+        "title1": "Something happens",
+        "title2": "page is not found!",
+        "redirect": "Go to main"
+    },
+    "forms": {
+        "feedback": {
+            "inputName": {
+                "label": "Name",
+                "placeholder": "Enter name",
+                "min_error": "Name must have at least 3 characters"
+            },
+            "inputContent": {
+                "label": "Feedback",
+                "placeholder": "Enter feelings",
+                "min_error": "Feedback must have at least 10 characters",
+                "max_error": "Feedback must have less then 100 characters"
+            },
+            "submit": {
+                "placeholder": "Leave feedback",
+                "successfull": "Feedback has been leaved"
+            }
+        }
+    },
+    "components": {
+        "cards": {
+            "feedbackCard": {
+                "status_buyer": "Buyer"
+            },
+            "blogCard": {
+                "action": "Read more"
+            }
+        }
+    },
+    "pages": {
+        "/feedbacks": {
+            "title": "Feedbacks",
+            "description": "Our clients' feedbacks, you can also leave your own"
+        },
+        "/blog": {
+            "title": "Our blog"
+        }
     }
 }

@@ -14,6 +14,7 @@ export interface IFeedbackCardProps
 	stars: 1 | 2 | 3 | 4 | 5
 	date: Date
 	content: string
+	languagedata: any
 }
 
 function FeedbackCard({
@@ -32,7 +33,7 @@ function FeedbackCard({
 			<aside className={s.s1}>
 				<section>
 					<h2 className={s.title}>{name}</h2>
-					<p className={s.status}>{status}</p>
+					<p className={s.status}>{props.languagedata[status]}</p>
 				</section>
 			</aside>
 			<aside className={s.s2}>

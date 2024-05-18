@@ -1,7 +1,7 @@
 import { Copyright } from 'lucide-react'
 import Link from 'next/link'
 
-export default function NotFound(props: { params: { lang: string } }) {
+export default function NotFound() {
 	return (
 		<main className='flex flex-col items-center justify-center h-svh relative'>
 			<div className='border-r absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-light/5 to-light-200'></div>

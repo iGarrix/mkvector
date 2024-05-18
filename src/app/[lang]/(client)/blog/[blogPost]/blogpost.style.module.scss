@@ -1,0 +1,30 @@
+.container {
+	.sect1 {
+		@apply border-y grid grid-cols-2;
+		@apply xs:grid-cols-1 lg:grid-cols-2;
+		@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+
+		.s1 {
+			@apply border-r;
+			@apply xs:border-r-0 lg:border-r;
+		}
+
+		aside {
+			@apply py-5;
+		}
+
+		.s2 {
+			@apply px-6;
+			@apply xs:px-0 lg:px-6;
+		}
+	}
+}
+
+.notfoundContainer {
+	@apply flex flex-col justify-center items-center gap-4 h-full min-h-[58svh];
+	@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+
+	h1 {
+		@apply text-4xl uppercase text-center text-balance font-black;
+	}
+}

@@ -1,7 +1,29 @@
 {
+    "global": {
+        "rights": "Всі права захищені"
+    },
+    "routing": {
+        "root": "Головна сторінка",
+        "blog": "Блог",
+        "portfolio": "Портфоліо",
+        "feedbacks": "Відгуки"
+    },
     "globalHeader": {
         "navigation": {
-            "portfolio": "Портфоліо",
+            "portfolio": {
+                "title": "Портфоліо",
+                
+                  "subset": {
+                    "kitchens": "кухні",
+                    "cases": "шафи",
+                    "kids": "дитячі",
+                    "hallways": "передпокої",
+                    "bathrooms": "ванні кімнати",
+                    "bedrooms": "спальні",
+                    "tables": "столи",
+                    "wardrobes": "гардероби"
+                  }
+            },
             "blog": "Блог",
             "feedbacks": "Відгуки"
         },
@@ -10,6 +32,55 @@
         }
     },
     "globalFooter": {
-
+        "navigation_root": "навігація",
+        "contact_root": "контакти",
+        "placement": {
+            "root":"Місце розташування",
+            "placeaddress": "Київ, вул. Жмеринська, 1",
+            "action": "Зв'язатись з нами"
+        }
+    },
+    "not_found": {
+        "title1": "Виникла помилка",
+        "title2": "сторінку не знайдено!",
+        "redirect": "Перейти на головну"
+    },
+    "forms": {
+        "feedback": {
+            "inputName": {
+                "label": "Ім'я",
+                "placeholder": "Введіть ім`я",
+                "min_error": "Ім'я повинно мати не менше 3 символів"
+            },
+            "inputContent": {
+                "label": "Відгук",
+                "placeholder": "Напишіть відгук",
+                "min_error": "Відгук повинен мати не менше 10 символів",
+                "max_error": "Відгук повинен мати не більше 100 символів"
+            },
+            "submit": {
+                "placeholder": "Залишити відгук",
+                "successfull": "Відгук надіслано"
+            }
+        }
+    },
+    "components": {
+        "cards": {
+            "feedbackCard": {
+                "status_buyer": "Покупець"
+            },
+            "blogCard": {
+                "action": "Read more"
+            }
+        }
+    },
+    "pages": {
+        "/feedbacks": {
+            "title": "Відгуки",
+            "description": "Відгуки наших клієнтів, ви також можете залишити свій відгук"
+        },
+        "/blog": {
+            "title": "Наш блог"
+        }
     }
 }
