@@ -2,6 +2,9 @@
     "global": {
         "rights": "All rights reserved"
     },
+    "discalimer": {
+        "warn": "Language was choosed by region, where website had been placed"
+    },
     "metadata": {
         "/": {
             "title": "Main",
@@ -84,6 +87,22 @@
                 "placeholder": "Leave feedback",
                 "successfull": "Feedback has been leaved"
             }
+        },
+        "asking": {
+            "inputName": {
+                "label": "Name",
+                "placeholder": "Enter name",
+                "asking_name_required": "Name required"
+            },
+            "inputEmail": {
+                "label": "Email",
+                "placeholder": "Enter email",
+                "asking_email_invalid": "Email isn't valid"
+            },
+            "submit": {
+                "placeholder": "Leave question form",
+                "successfull": "Question has been sent"
+            }
         }
     },
     "components": {
@@ -97,6 +116,41 @@
         }
     },
     "pages": {
+        "/": {
+            "banner": "CASE FURNITURE TO ORDER IN KYIV",
+            "benefits": {
+                "title": "Benefits that you'll get",
+                "0": {
+                    "title": "Free consultation",
+                    "desc": "Depending on the size and wishes, we will offer you several options for furniture - modern, comfortable, practical"
+                },
+                "1": {
+                    "title": "High quality",
+                    "desc": "The control of each stage of furniture manufacturing will be carried out and thanks to this you will receive high quality."
+                },
+                "2": {
+                    "title": "Fast order fullfillment",
+                    "desc": "peed of work, which is pleasantly surprising! 21 days - average order execution time from project to installation"
+                },
+                "3": {
+                    "title": "Help while choosing",
+                    "desc": "You will get a full free cosultation on the choice of materials, we will help you to choose exactly what you are looking for"
+                },
+                "4": {
+                    "title": "Warranty",
+                    "desc": "Thanks to the use of certified materials and accessories, you will receive a 1 year warranty."
+                },
+                "5": {
+                    "title": "Available price",
+                    "desc": "We are constantly working to reduce costs and offer prices below a large number of competitors"
+                }
+            },
+            "ends": {
+                "title": "We are ready to help you",
+                "t1": "It is extremely difficult to choose ready-made cabinet furniture that would perfectly meet all your needs. You often have to sacrifice something. But it is not necessary to do this at all! Making furniture to order solves this problem!",
+                "t2": "Custom-made furniture is a quality work, stylish design, durability and reliability. The team of professionals of MK Vector will make furniture for you that will fully meet your taste and needs, give your house a special character and style. We are happy to make furniture for you that will last for many years!"
+            }
+        },
         "/feedbacks": {
             "title": "Feedbacks",
             "description": "Our clients' feedbacks, you can also leave your own"
@@ -112,7 +166,14 @@
         },
         "/portfolio": {
             "title": "Choose a kind of work",
-            "description": "You can see our works and choose similar of them for yourself"
+            "description": "You can see our works and choose similar of them for yourself",
+            "[blogpost]": {       
+                "action": "Read more", 
+                "[notfound]": {
+                    "title": "Work not found",
+                    "return": "You can redirect to other page"
+                }
+            }
         }
     }
 }

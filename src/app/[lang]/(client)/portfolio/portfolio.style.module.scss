@@ -22,3 +22,72 @@
 		}
 	}
 }
+
+.serviceContainer {
+	@apply grid grid-cols-4 gap-4 px-[10rem];
+	@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+	@apply xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+}
+
+.notfoundContainer {
+	@apply flex flex-col justify-center items-center gap-4 h-full min-h-[58svh];
+	@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+
+	h1 {
+		@apply text-4xl uppercase text-center text-balance font-black;
+	}
+
+	a {
+		@apply text-accent;
+	}
+}
+
+.servicePostContainer {
+	.sect1 {
+		@apply border-y grid grid-cols-2;
+		@apply xs:grid-cols-1 lg:grid-cols-2;
+		@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+
+		.s1 {
+			@apply border-r;
+			@apply xs:border-r-0 lg:border-r;
+
+			p {
+				@apply text-zinc-500;
+			}
+		}
+
+		aside {
+			@apply py-5;
+		}
+
+		.s2 {
+			@apply px-6;
+			@apply xs:px-0 lg:px-6;
+		}
+	}
+
+	.carousel {
+		@apply w-full relative bg-light-200;
+
+		.content {
+			img {
+				@apply object-contain w-[350px] h-[350px] rounded;
+			}
+		}
+	}
+
+	.steps {
+		@apply grid mt-14 gap-10;
+		@apply xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+		@apply xs:px-[1rem] sm:px-[2rem] md:px-[5rem] 2xl:px-[10rem];
+
+		aside {
+			@apply flex gap-6 text-balance;
+
+			p {
+				@apply text-zinc-500;
+			}
+		}
+	}
+}

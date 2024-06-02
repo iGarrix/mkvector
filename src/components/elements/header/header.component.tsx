@@ -15,6 +15,9 @@ import { PathHeader } from './pathheader.component'
 import { usePathname } from 'next/navigation'
 import Link from '@/components/Link/link.component'
 import { Locale } from '@/config/i18.config'
+import { useAsking } from '@/hooks/uihooks/ask/asking.store'
+import { usePhoneNavigation } from '@/hooks/uihooks/usePhoneNavigation/phone_navigation.store'
+import { IntlDisclaimer } from '../internationalizateDisclaimer/intl_disclaimer.component'
 interface IHeaderProps {
 	locale: Locale
 	datalocale: any
@@ -23,51 +26,57 @@ interface IHeaderProps {
 const portfolioNav: Array<{ title: string; href: string }> = [
 	{
 		title: 'kitchens',
-		href: '/s',
+		href: '/portfolio/kitchens',
 	},
-	{
-		title: 'cases',
-		href: '/',
-	},
-	{
-		title: 'kids',
-		href: '/',
-	},
-	{
-		title: 'hallways',
-		href: '/',
-	},
-	{
-		title: 'bathrooms',
-		href: '/',
-	},
-	{
-		title: 'bedrooms',
-		href: '/',
-	},
-	{
-		title: 'tables',
-		href: '/',
-	},
-	{
-		title: 'wardrobes',
-		href: '/',
-	},
-	{
-		title: 'office',
-		href: '/',
-	},
+	// {
+	// 	title: 'cases',
+	// 	href: '/portfolio/cases',
+	// },
+	// {
+	// 	title: 'kids',
+	// 	href: '/portfolio/kids',
+	// },
+	// {
+	// 	title: 'hallways',
+	// 	href: '/portfolio/hallways',
+	// },
+	// {
+	// 	title: 'bathrooms',
+	// 	href: '/portfolio/bathrooms',
+	// },
+	// {
+	// 	title: 'bedrooms',
+	// 	href: '/portfolio/bedrooms',
+	// },
+	// {
+	// 	title: 'tables',
+	// 	href: '/portfolio/tables',
+	// },
+	// {
+	// 	title: 'wardrobes',
+	// 	href: '/portfolio/wardrobes',
+	// },
+	// {
+	// 	title: 'office',
+	// 	href: '/portfolio/office',
+	// },
 ]
 
 function Header({ ...props }: IHeaderProps) {
 	const pathname = usePathname()
+	const { onOpen: onAsking } = useAsking()
+	const { onOpen: onPhoneModal } = usePhoneNavigation()
 	return (
 		<Fragment>
 			<header className={cn(sass.header)} {...props}>
+				<IntlDisclaimer
+					locale={props.locale}
+					locale_data={props.datalocale[2]}
+				/>
 				<aside className={sass.s1}>
 					<div className={sass.logoWrapper}>
 						<Link href={'/'} lang={props.locale} className={sass.title}>
-							MKVector
+							<span className='text-amber-500'>MK</span>Vector
 						</Link>
 					</div>
 					<NavigationMenu>
@@ -88,13 +97,18 @@ function Header({ ...props }: IHeaderProps) {
 												key={key}
 												lang={props.locale}
 												href={item.href}
-												className={`px-4 py-2 w-full transition-colors hover:bg-light-200 hover:text-accent flex items-center justify-between gap-10 group/item capitalize`}>
-												{
-													props.datalocale[0].navigation.portfolio.subset[
-														item.title
-													]
-												}
-												<ChevronRight className='w-[16px] transition-transform group-hover/item:translate-x-1' />
+												legacyBehavior
+												passHref>
+												<NavigationMenuLink
+													className={`px-4 py-2 w-full transition-colors hover:bg-light-200 hover:text-accent flex items-center justify-between gap-10 group/item capitalize`}>
+													{
+														props.datalocale[0].navigation.portfolio.subset[
+															item.title
+														]
+													}
+
+													<ChevronRight className='w-[16px] transition-transform group-hover/item:translate-x-1' />
+												</NavigationMenuLink>
 											</Link>
 										))}
 									</nav>
@@ -128,15 +142,31 @@ function Header({ ...props }: IHeaderProps) {
 							</NavigationMenuItem>
 						</NavigationMenuList>
 					</NavigationMenu>
-					<button className={sass.callback} aria-label='callbackform'>
+					<button
+						className={sass.callback}
+						aria-label='callbackform'
+						onClick={() => {
+							onAsking(true)
+						}}>
 						<MessageCircle />
 					</button>
-					<button className={sass.openNav} aria-label='phonemenu'>
+					<button
+						className={sass.openNav}
+						aria-label='phonemenu'
+						onClick={() => {
+							onPhoneModal(true)
+						}}>
 						<Menu />
 					</button>
 				</aside>
 			</header>
-			<PathHeader routingData={props.datalocale[1]} locale={props.locale} />
+			<PathHeader
+				routingData={Object.assign(
+					{ root: props.datalocale[1] },
+					{ subset: props.datalocale[0].navigation.portfolio.subset }
+				)}
+				locale={props.locale}
+			/>
 		</Fragment>
 	)
 }

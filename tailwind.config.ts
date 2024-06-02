@@ -25,6 +25,9 @@ const config: Config = {
 			sheppard: ['var(--sheppard)', 'serif'],
 		},
 		extend: {
+			backgroundImage: {
+				noise: "url('https://arc.net/noise-light.png')",
+			},
 			colors: {
 				light: {
 					DEFAULT: '#fdfdfd',

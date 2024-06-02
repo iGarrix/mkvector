@@ -32,7 +32,7 @@ export const FeedbackForm: React.FC<any> = (props: any) => {
 					upperPlaceholder={data.inputName.label}
 					placeholder={data.inputName.placeholder}
 					errorMessage={
-						errors.name?.message && data.feedback.inputName[errors.name.message]
+						errors.name?.message && data.inputName[errors.name.message]
 					}
 				/>
 				<ZodFieldArea

@@ -1,3 +1,13 @@
-export default function ClientPage(props: { params: { lang: string } }) {
-	return <div className='h-[100svh]'>{props.params.lang}</div>
+import { Locale } from '@/config/i18.config'
+import ClientMainPage from './client_page'
+import { getDictionary } from '@/config/dictionary'
+
+export default async function ClientPage(props: { params: { lang: Locale } }) {
+	const data = await getDictionary(props.params.lang)
+	return (
+		<ClientMainPage
+			locale={props.params.lang}
+			locale_data={Object.assign({ root: data.pages['/'] })}
+		/>
+	)
 }

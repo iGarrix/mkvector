@@ -33,7 +33,7 @@ function PortfolioCard({
 				push(languageRedirect(locale, href))
 			}}>
 			<aside>
-				<Image width={0} height={0} priority sizes='150px' {...image} />
+				<Image width={0} height={0} priority sizes='250px' {...image} />
 			</aside>
 			<div className={s.wrap}>{cardTitle}</div>
 		</div>

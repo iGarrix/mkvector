@@ -1,5 +1,5 @@
 .header {
-	@apply sticky top-0 left-0 w-full border-b bg-light;
+	@apply sticky top-0 left-0 w-full border-b bg-light z-[100];
 
 	.s1 {
 		@apply flex items-center justify-between px-[10rem] gap-5 h-[4rem];
@@ -16,7 +16,7 @@
 		}
 
 		.navbarList {
-			@apply flex items-center gap-[3rem];
+			@apply flex items-center gap-[3rem] z-[1000];
 			@apply xs:hidden md:flex;
 
 			.openTrigger {

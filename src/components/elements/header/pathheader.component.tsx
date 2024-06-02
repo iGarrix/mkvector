@@ -24,7 +24,7 @@ export const PathHeader: React.FC<IPathHeaderProps> = ({ ...props }) => {
 	const rerender = useMemo(() => {
 		const init = [
 			{
-				title: props.routingData['root'],
+				title: props.routingData.root['root'],
 				path: '/',
 				isEnd: false,
 			},
@@ -40,9 +40,20 @@ export const PathHeader: React.FC<IPathHeaderProps> = ({ ...props }) => {
 		return [
 			...init,
 			...next.map((item, key) => {
+				const index = next.findIndex(f => f === item)
+				const newPathArr = []
+				for (let i = 0; i < index; i++) {
+					const element = next[i]
+					newPathArr.push(element)
+				}
+				const newPath = newPathArr.join('/')
+
 				return {
-					title: props.routingData[item],
-					path: item,
+					title:
+						props.routingData.root[item] ||
+						props.routingData.subset[item] ||
+						item,
+					path: newPath.startsWith('/') ? newPath : '/' + newPath,
 					isEnd: key === next.length - 1,
 				}
 			}),
@@ -58,7 +69,6 @@ export const PathHeader: React.FC<IPathHeaderProps> = ({ ...props }) => {
 			newPath(newResult)
 		}
 	}, [pathname])
-
 	return (
 		<aside className={sass.headerPath}>
 			<Breadcrumb>

@@ -23,6 +23,8 @@ export default function BlogPostClientPage({
 			const find = blogs[routePost]
 			if (find) {
 				setPost(find)
+			} else {
+				setPost(null)
 			}
 		}
 	}, [post])
